@@ -93,7 +93,7 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
         else
         {
             EditoolsLayout.Horizontal(true);
-            EditoolsBox.HelpBox($"Add agent to spawn");
+            EditoolsBox.HelpBoxInfo($"Add agent to spawn");
             EditoolsLayout.Vertical(true);
             EditoolsButton.Button("Add Agent", Color.cyan, _point.AddAgent);
             EditoolsButton.ButtonWithConfirm("#", Color.red, _point.ClearAgents, "Clear Agents", "Clear All Agents ?",
