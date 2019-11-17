@@ -211,6 +211,114 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &788955116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788955121}
+  - component: {fileID: 788955120}
+  - component: {fileID: 788955119}
+  - component: {fileID: 788955117}
+  - component: {fileID: 788955118}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!54 &788955117
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788955116}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &788955118
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788955116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &788955119
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788955116}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &788955120
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788955116}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &788955121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788955116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10.19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,8 +395,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.19161524, y: 0.099035926, z: -0.019438023, w: -0.9762672}
+  m_LocalPosition: {x: 20.145126, y: 19.461884, z: -21.54294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -323,8 +431,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfc9bb380b4b2a4b87ea051387cf0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoints: []
-  TriggerZonePrefabs: {fileID: 0}
+  SpawnPoints:
+  - IsVisible: 1
+    SpawnModes:
+    - Type: 0
+      CircleMode:
+        Position: {x: 0, y: -0.019560814, z: 12.405807}
+        Radius: 5
+        AgentNumber: 10
+      LineMode:
+        Position: {x: 0, y: 0, z: 0}
+        EndPosition: {x: 1, y: 1, z: 1}
+        AgentNumber: 10
+      PointMode:
+        Position: {x: 0, y: 0, z: 0}
+    - Type: 1
+      CircleMode:
+        Position: {x: 0, y: 0, z: 0}
+        Radius: 5
+        AgentNumber: 10
+      LineMode:
+        Position: {x: -14.445043, y: 4.3765144, z: 22.0596}
+        EndPosition: {x: 4.0953884, y: 4.9640017, z: 21.09915}
+        AgentNumber: 10
+      PointMode:
+        Position: {x: 0, y: 0, z: 0}
+    - Type: 2
+      CircleMode:
+        Position: {x: 0, y: 0, z: 0}
+        Radius: 5
+        AgentNumber: 10
+      LineMode:
+        Position: {x: 0, y: 0, z: 0}
+        EndPosition: {x: 1, y: 1, z: 1}
+        AgentNumber: 10
+      PointMode:
+        Position: {x: 10.882393, y: 0, z: 3.0351105}
+    IsMonoAgent: 0
+    MonoAgent: {fileID: 0}
+    Agents:
+    - {fileID: 5267402368162802714, guid: 65ce618db89aed747836dd7f6b3c0426, type: 3}
+    - {fileID: 1320845604510079926, guid: 2559330e89889be4486fe2f2de84a05e, type: 3}
+    - {fileID: 6342377758707013238, guid: 765e50946922ceb47b7efa2633606a16, type: 3}
+    Position: {x: 0, y: 0, z: 0}
+    Size: {x: 1, y: 1, z: 1}
+  TriggerZonePrefabs: {fileID: 562901738273366585, guid: adb02ba4da1e08249803c9f4547de148,
+    type: 3}
 --- !u!4 &1074761687
 Transform:
   m_ObjectHideFlags: 0
