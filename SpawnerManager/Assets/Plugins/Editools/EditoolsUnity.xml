@@ -4,6 +4,36 @@
         <name>EditoolsUnity</name>
     </assembly>
     <members>
+        <member name="T:EditoolsUnity.EditoolsBox">
+            <summary>
+            Class box of editools
+            </summary>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsBox.HelpBox(System.String,UnityEditor.MessageType)">
+            <summary>
+            Create HelpBox
+            </summary>
+            <param name="_message"></param>
+            <param name="_messageType"></param>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsBox.HelpBoxWarning(System.String)">
+            <summary>
+            Create Warning HelpBox
+            </summary>
+            <param name="_message"></param>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsBox.HelpBoxError(System.String)">
+            <summary>
+            Create Error Warning
+            </summary>
+            <param name="_message"></param>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsBox.HelpBoxInfo(System.String)">
+            <summary>
+            Create Info Helpbox
+            </summary>
+            <param name="_message"></param>
+        </member>
         <member name="T:EditoolsUnity.EditoolsButton">
             <summary>
             Class button of Editools
@@ -120,6 +150,12 @@
             <param name="_validTest"></param>
             <param name="_cancelText"></param>
             <param name="_showCondition"></param>
+        </member>
+        <member name="T:EditoolsUnity.EditorCustom`1">
+            <summary>
+            template class to create new editor
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="T:EditoolsUnity.EditoolsField">
             <summary>
@@ -245,35 +281,62 @@
             <param name="_label"></param>
             <param name="_type"></param>
         </member>
-        <member name="T:EditoolsUnity.EditoolsBox">
+        <member name="T:EditoolsUnity.EditoolsHandle">
             <summary>
-            Class box of editools
+            Control and Drawing in the 3D scene view
             </summary>
         </member>
-        <member name="M:EditoolsUnity.EditoolsBox.HelpBox(System.String,UnityEditor.MessageType)">
+        <member name="M:EditoolsUnity.EditoolsHandle.PositionHandle(UnityEngine.Vector3@,UnityEngine.Quaternion)">
             <summary>
-            Create HelpBox
+            Edit position of ref parameter in the secene view
             </summary>
-            <param name="_message"></param>
-            <param name="_messageType"></param>
+            <param name="_position"></param>
+            <param name="_rotation"></param>
         </member>
-        <member name="M:EditoolsUnity.EditoolsBox.HelpBoxWarning(System.String)">
+        <member name="M:EditoolsUnity.EditoolsHandle.ScaleHandle(UnityEngine.Vector3@,UnityEngine.Vector3,UnityEngine.Quaternion,System.Single)">
             <summary>
-            Create Warning HelpBox
+            Edit Scale of ref parameter in the scene view 
             </summary>
-            <param name="_message"></param>
+            <param name="_scale"></param>
+            <param name="_position"></param>
+            <param name="_rotation"></param>
+            <param name="_size"></param>
         </member>
-        <member name="M:EditoolsUnity.EditoolsBox.HelpBoxError(System.String)">
+        <member name="M:EditoolsUnity.EditoolsHandle.RotationHandle(UnityEngine.Quaternion@,UnityEngine.Vector3)">
             <summary>
-            Create Error Warning
+            Edit Rotation of ref parameter in the scene view 
             </summary>
-            <param name="_message"></param>
+            <param name="_rotation"></param>
+            <param name="_position"></param>
         </member>
-        <member name="M:EditoolsUnity.EditoolsBox.HelpBoxInfo(System.String)">
+        <member name="M:EditoolsUnity.EditoolsHandle.SetColor(UnityEngine.Color)">
             <summary>
-            Create Info Helpbox
+            Set current Handle Color
             </summary>
-            <param name="_message"></param>
+            <param name="_color"></param>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsHandle.DrawWireCube(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Draw WireCube
+            </summary>
+            <param name="_position"></param>
+            <param name="_size"></param>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsHandle.DrawDottedLine(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
+            <summary>
+            Draw Dotted Line
+            </summary>
+            <param name="_position1"></param>
+            <param name="_position2"></param>
+            <param name="_screenSpaceSize"></param>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsHandle.DrawWireDisc(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
+            <summary>
+            Draw Wire Disc
+            </summary>
+            <param name="_position"></param>
+            <param name="_normal"></param>
+            <param name="_radius"></param>
         </member>
         <member name="T:EditoolsUnity.EditoolsLayout">
             <summary>
@@ -316,109 +379,70 @@
             <param name="_isWide"></param>
             <returns></returns>
         </member>
-        <member name="T:EditoolsUnity.EditoolsHandle">
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.BeginGUI">
             <summary>
-            Control and Drawing in the 3D scene view
+            Begin  GUI
             </summary>
         </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.PositionHandle(UnityEngine.Vector3@,UnityEngine.Quaternion)">
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.EndGUI">
             <summary>
-            Edit position of ref parameter in the scene view
+            End GUI
             </summary>
-            <param name="_position"></param>
-            <param name="_rotation"></param>
         </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.PositionHandle(UnityEngine.Vector3,UnityEngine.Quaternion)">
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.BeginGUI(System.Boolean)">
             <summary>
-            Return new position edited in the scene view
+            Start and close GUI easily with bool parameter
             </summary>
-            <param name="_position"></param>
-            <param name="_rotation"></param>
-            <returns></returns>
+            <param name="_begin"></param>
         </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.ScaleHandle(UnityEngine.Vector3@,UnityEngine.Vector3,UnityEngine.Quaternion,System.Single)">
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.BeginArea(UnityEngine.Rect)">
             <summary>
-            Edit Scale of ref parameter in the scene view 
+            Create Area
             </summary>
-            <param name="_scale"></param>
-            <param name="_position"></param>
-            <param name="_rotation"></param>
-            <param name="_size"></param>
+            <param name="_rect"></param>
         </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.ScaleHandle(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Quaternion,System.Single)">
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.EndArea">
             <summary>
-            Return new scale edited in the scene view
+            Close Area
             </summary>
-            <param name="_scale"></param>
-            <param name="_position"></param>
-            <param name="_rotation"></param>
-            <param name="_size"></param>
-            <returns></returns>
         </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.RotationHandle(UnityEngine.Quaternion@,UnityEngine.Vector3)">
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.Box(System.String)">
             <summary>
-            Edit Rotation of ref parameter in the scene view 
+            Create Box
             </summary>
-            <param name="_rotation"></param>
-            <param name="_position"></param>
+            <param name="_text"></param>
         </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.RotationHandle(UnityEngine.Quaternion,UnityEngine.Vector3)">
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.Box(System.String,UnityEngine.GUIStyle)">
             <summary>
-            Return new Rotation edited in the scene view 
+            Create Box with style
             </summary>
-            <param name="_rotation"></param>
-            <param name="_position"></param>
+            <param name="_text"></param>
+            <param name="_guiStyle"></param>
         </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.SetColor(UnityEngine.Color)">
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.Button(System.String,System.Action)">
             <summary>
-            Set current Handle Color
+            create Button
+            </summary>
+            <param name="_text"></param>
+            <param name="_callback"></param>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.Button(System.String,System.Action,UnityEngine.GUIStyle)">
+            <summary>
+            create Button with style
+            </summary>
+            <param name="_text"></param>
+            <param name="_callback"></param>
+            <param name="_style"></param>
+        </member>
+        <member name="M:EditoolsUnity.EditoolsSceneGUI.SetStyle(UnityEngine.Color,UnityEngine.TextAnchor,EditoolsUnity.StyleMode,UnityEngine.FontStyle)">
+            <summary>
+            Set Style to GUI object
             </summary>
             <param name="_color"></param>
-        </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.DrawWireCube(UnityEngine.Vector3,UnityEngine.Vector3)">
-            <summary>
-            Draw WireCube
-            </summary>
-            <param name="_position"></param>
-            <param name="_size"></param>
-        </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.DrawDottedLine(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
-            <summary>
-            Draw Dotted Line
-            </summary>
-            <param name="_position1"></param>
-            <param name="_position2"></param>
-            <param name="_screenSpaceSize"></param>
-        </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.DrawLine(UnityEngine.Vector3,UnityEngine.Vector3)">
-            <summary>
-            Draw Line
-            </summary>
-            <param name="_position1"></param>
-            <param name="_position2"></param>
-        </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.DrawWireDisc(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
-            <summary>
-            Draw Wire Disc
-            </summary>
-            <param name="_position"></param>
-            <param name="_normal"></param>
-            <param name="_radius"></param>
-        </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.DrawSolidDisc(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
-            <summary>
-            Draw Solid Disc
-            </summary>
-            <param name="_position"></param>
-            <param name="_normal"></param>
-            <param name="_radius"></param>
-        </member>
-        <member name="M:EditoolsUnity.EditoolsHandle.Label(UnityEngine.Vector3,System.String)">
-            <summary>
-            Create Label in scene at position
-            </summary>
-            <param name="_position"></param>
-            <param name="_label"></param>
+            <param name="_alignment"></param>
+            <param name="_styleMode"></param>
+            <param name="_style"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

@@ -63,4 +63,8 @@ crashlytics-build.properties
 /SpawnerManager/Logs/**
 /SpawnerManager/.idea/**
 /SpawnerManager/Temp/**
+/SpawnerManager/obj/**
 /SpawnerManager/Library/**
+/SpawnerManager/Build/**
+Build/**
+/SpawnerManager/Packages/**
