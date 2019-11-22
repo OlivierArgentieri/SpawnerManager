@@ -17,6 +17,8 @@ public class SM_MenuItem
 
         if (_spawnerManagers.Length > 0) return;
         GameObject _spawnerManager = new GameObject("SpawnerManager", typeof(SM_SpawnerManager));
+        Selection.activeObject = _spawnerManager;
+        
     }
     #endregion
 }

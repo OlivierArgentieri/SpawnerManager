@@ -10,10 +10,17 @@ using UnityEditor;
 [CustomEditor(typeof(SM_SpawnerManager))]
 public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
 {
-    Version version = new Version(1,1,2);
+    Version version = new Version(1,2,2);
+    private const string triggerSpawnAssetName = "SpawnCollider/BoxCollider";
     protected override void OnEnable()
     {
-        base.OnEnable(); 
+        base.OnEnable();
+        if (!eTarget.TriggerZonePrefab)
+        {
+            SM_SpawnTrigger _triggerAsset = Resources.Load<SM_SpawnTrigger>(triggerSpawnAssetName);
+            if (_triggerAsset)
+                eTarget.TriggerZonePrefab = _triggerAsset;
+        }
         Tools.current = Tool.None;
     }
 
@@ -21,8 +28,8 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
     {
         //base.OnInspectorGUI();
         EditoolsBox.HelpBoxInfo($"SPAWN TOOL V{version}");
-        eTarget.TriggerZonePrefabs = (SM_SpawnTrigger) EditoolsField.ObjectField(eTarget.TriggerZonePrefabs, typeof(SM_SpawnTrigger), false);
-        if (!eTarget.TriggerZonePrefabs) return;
+        eTarget.TriggerZonePrefab = (SM_SpawnTrigger) EditoolsField.ObjectField(eTarget.TriggerZonePrefab, typeof(SM_SpawnTrigger), false);
+        if (!eTarget.TriggerZonePrefab) return;
         
         EditoolsLayout.Space(1);
         DrawnSpawnPointsUI();
@@ -32,7 +39,7 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
 
     private void OnSceneGUI()
     {
-        if (!eTarget.TriggerZonePrefabs) return;
+        if (!eTarget.TriggerZonePrefab) return;
 
         DrawSpawnPointScene();
     }

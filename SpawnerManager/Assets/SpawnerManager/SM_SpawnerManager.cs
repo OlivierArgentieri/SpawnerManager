@@ -8,7 +8,7 @@ public class SM_SpawnerManager : MonoBehaviour
 {
     #region f/p
     public List<SM_SpawnPoint> SpawnPoints = new List<SM_SpawnPoint>();
-    public SM_SpawnTrigger TriggerZonePrefabs = null;
+    public SM_SpawnTrigger TriggerZonePrefab = null;
     
     #endregion
 
@@ -26,11 +26,11 @@ public class SM_SpawnerManager : MonoBehaviour
 
     void SpawnAll()
     {
-        if (!TriggerZonePrefabs) return;
+        if (!TriggerZonePrefab) return;
         
         for (int i = 0; i < SpawnPoints.Count; i++)
         {
-            SM_SpawnTrigger _trigger = Instantiate(TriggerZonePrefabs);
+            SM_SpawnTrigger _trigger = Instantiate(TriggerZonePrefab);
             if(_trigger) _trigger.SetData(SpawnPoints[i]);
            
         }
