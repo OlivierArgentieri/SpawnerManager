@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class SM_MenuItem : MonoBehaviour
+public class SM_MenuItem 
 {
     #region f/p
     #endregion

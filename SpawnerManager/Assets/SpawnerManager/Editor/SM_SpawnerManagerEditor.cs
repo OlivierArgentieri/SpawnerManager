@@ -10,7 +10,7 @@ using UnityEditor;
 [CustomEditor(typeof(SM_SpawnerManager))]
 public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
 {
-    Version version = new Version(1,1,1);
+    Version version = new Version(1,1,2);
     protected override void OnEnable()
     {
         base.OnEnable(); 
