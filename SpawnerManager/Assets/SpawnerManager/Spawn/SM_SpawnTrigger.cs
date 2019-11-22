@@ -26,7 +26,7 @@ public class SM_SpawnTrigger : MonoBehaviour
 
     private void OnTriggerEnter()
     {
-        if (data == null || !Triggered) return;
+        if (data == null || !data.UseTrigger || !Triggered) return;
         StartCoroutine(DelayedCallback(data.SpawnDelay, TriggerSpawn));
     }
     #endregion
@@ -49,10 +49,10 @@ public class SM_SpawnTrigger : MonoBehaviour
         {
             SM_SpawnMode _mode = data.SpawnModes[i];
             
-            if(data.IsMonoAgent && data.AutoDestroyAgent)
-               _mode.Mode.SpawnWithDestroyDelay(data.MonoAgent, data.AutoDestroyDelay);
-            else if(data.AutoDestroyAgent)
-                _mode.Mode.SpawnWithDestroyDelay(data.Agents, data.AutoDestroyDelay);
+            if(data.IsMonoAgent && _mode.Mode.AutoDestroyAgent)
+               _mode.Mode.SpawnWithDestroyDelay(data.MonoAgent);
+            else if(_mode.Mode.AutoDestroyAgent)
+                _mode.Mode.SpawnWithDestroyDelay(data.Agents);
             
             else if(data.IsMonoAgent)
                 _mode.Mode.Spawn(data.MonoAgent);

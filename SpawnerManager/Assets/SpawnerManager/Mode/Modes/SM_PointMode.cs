@@ -22,15 +22,14 @@ public class SM_PointMode : SM_Mode
         GameObject.Instantiate(_agent, Position, Quaternion.identity);
     }
     
-    public override void SpawnWithDestroyDelay(GameObject _agent, float _destroyDelay)
+    public override void SpawnWithDestroyDelay(GameObject _agent)
     {
         GameObject _go = GameObject.Instantiate(_agent, Position, Quaternion.identity);
-        GameObject.Destroy(_go, _destroyDelay);
+        GameObject.Destroy(_go, AutoDestroyDelay);
     }
 
     public override void Spawn(List<GameObject> _agents)
     {
-        
         int _randomIndex = UnityEngine.Random.Range(0, _agents.Count);
         if (!_agents[_randomIndex]) return;
 
@@ -38,17 +37,15 @@ public class SM_PointMode : SM_Mode
     }
     
     
-    public override void SpawnWithDestroyDelay(List<GameObject> _agents, float _destroyDelay)
+    public override void SpawnWithDestroyDelay(List<GameObject> _agents)
     {
         int _randomIndex = UnityEngine.Random.Range(0, _agents.Count);
         if (!_agents[_randomIndex]) return;
 
         GameObject _go = GameObject.Instantiate(_agents[_randomIndex], Position, Quaternion.identity);
-        GameObject.Destroy(_go, _destroyDelay);
+        GameObject.Destroy(_go, AutoDestroyDelay);
     }
-
-   
-
+    
 
 #if UNITY_EDITOR
     public override void DrawLinkTosSpawner(Vector3 _position)
@@ -65,6 +62,10 @@ public class SM_PointMode : SM_Mode
 
     public override void DrawSettings()
     {
+        
+        EditoolsField.Toggle("Auto Destroy Agents ?", ref AutoDestroyAgent);
+        if(AutoDestroyAgent)
+            AutoDestroyDelay = EditorGUILayout.Slider("Auto Destroy Delay", AutoDestroyDelay, 0, 15);
     }
 #endif
 

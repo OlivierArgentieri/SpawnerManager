@@ -10,6 +10,7 @@ using UnityEditor;
 [CustomEditor(typeof(SM_SpawnerManager))]
 public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
 {
+    Version version = new Version(1,0,0, 0);
     protected override void OnEnable()
     {
         base.OnEnable(); 
@@ -19,7 +20,7 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
     public override void OnInspectorGUI()
     {
         //base.OnInspectorGUI();
-        EditoolsBox.HelpBoxInfo("SPAWN TOOL V1");
+        EditoolsBox.HelpBoxInfo($"SPAWN TOOL V{version}");
         eTarget.TriggerZonePrefabs = (SM_SpawnTrigger) EditoolsField.ObjectField(eTarget.TriggerZonePrefabs, typeof(SM_SpawnTrigger), false);
         if (!eTarget.TriggerZonePrefabs) return;
         
@@ -73,9 +74,6 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
             EditoolsField.Toggle("Use Trigger ?", ref _point.UseTrigger);
 
             EditoolsLayout.Space();
-            EditoolsField.Toggle("Auto Destroy Agents ?", ref _point.AutoDestroyAgent);
-            if(_point.AutoDestroyAgent)
-                _point.AutoDestroyDelay = EditorGUILayout.Slider("Auto Destroy Delay", _point.AutoDestroyDelay, 0, 15);
             
             EditoolsLayout.Space(1);
             
@@ -166,6 +164,7 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
             EditoolsButton.ButtonWithConfirm("X", Color.red, _point.RemoveMode, i, "Remove Mode ?", "Remove This Mode ?");
             EditoolsLayout.Horizontal(false);
             DrawModeSettingsUI(_mode);
+            EditoolsLayout.Space(2);
         }
     }
 

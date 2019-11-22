@@ -5,14 +5,16 @@ using UnityEngine;
 [Serializable]
 public abstract class SM_Mode
 { 
-    public Vector3 Position = Vector3.zero; 
-    
+    public Vector3 Position = Vector3.zero;
+    public bool AutoDestroyAgent = false;
+    public float AutoDestroyDelay = 0;
+
     #region custom methods
 
     public abstract void Spawn(GameObject _agent);
     public abstract void Spawn(List<GameObject> _agent);
-    public abstract void SpawnWithDestroyDelay(GameObject _agent, float _destroyDelay = 0);
-    public abstract void SpawnWithDestroyDelay(List<GameObject> _agents, float _destroyDelay = 0);
+    public abstract void SpawnWithDestroyDelay(GameObject _agent);
+    public abstract void SpawnWithDestroyDelay(List<GameObject> _agents);
 #if UNITY_EDITOR
     public abstract void DrawSceneMode();
     public abstract void DrawSettings();

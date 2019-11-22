@@ -27,13 +27,13 @@ public class SM_LineMode : SM_Mode
         }
     }
     
-    public override void SpawnWithDestroyDelay(GameObject _agent, float _destroyDelay)
+    public override void SpawnWithDestroyDelay(GameObject _agent)
     {
         if (!_agent) return;
         for (int i = 0; i < AgentNumber; i++)
         {
             GameObject _go = GameObject.Instantiate(_agent, GetPositionOnLine(i, AgentNumber, Position, EndPosition), Quaternion.identity);
-            GameObject.Destroy(_go, _destroyDelay);
+            GameObject.Destroy(_go, AutoDestroyDelay);
         }
     }
 
@@ -47,14 +47,14 @@ public class SM_LineMode : SM_Mode
         }
     }
     
-    public override void SpawnWithDestroyDelay(List<GameObject> _agents, float _destroyDelay)
+    public override void SpawnWithDestroyDelay(List<GameObject> _agents)
     {
         for (int i = 0; i < AgentNumber; i++)
         {
             int _randomIndex = UnityEngine.Random.Range(0, _agents.Count);
             if (!_agents[_randomIndex]) continue;
             GameObject _go = GameObject.Instantiate(_agents[_randomIndex], GetPositionOnLine(i, AgentNumber, Position, EndPosition), Quaternion.identity);
-            GameObject.Destroy(_go, _destroyDelay);
+            GameObject.Destroy(_go, AutoDestroyDelay);
         }
     }
     
@@ -89,6 +89,10 @@ public class SM_LineMode : SM_Mode
         EditoolsField.IntSlider("Agent Number", ref AgentNumber, 1, 100);
         EndPosition = EditoolsField.Vector3Field("End Position", EndPosition);
         Position = EditoolsField.Vector3Field("Start Position", Position);
+        
+        EditoolsField.Toggle("Auto Destroy Agents ?", ref AutoDestroyAgent);
+        if(AutoDestroyAgent)
+            AutoDestroyDelay = EditorGUILayout.Slider("Auto Destroy Delay", AutoDestroyDelay, 0, 15);
     }
     #endif
 #endregion

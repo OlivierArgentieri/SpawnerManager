@@ -21,7 +21,12 @@ public class SM_CircleMode : SM_Mode
     
     
     #region custom methods
-
+    IEnumerator DelayedCallback(float _time, Action _callback)
+    {
+        yield return new WaitForSeconds(_time);
+        _callback?.Invoke();
+    }
+    
     public override void Spawn(GameObject _agent)
     {
         for (int i = 0; i < AgentNumber; i++)
@@ -29,23 +34,23 @@ public class SM_CircleMode : SM_Mode
             GameObject.Instantiate(_agent, GetRadiusPosition(i, AgentNumber, Radius, Position), Quaternion.identity);
         } 
     }
-    public override void SpawnWithDestroyDelay(GameObject _agent, float _destroyDelay)
+    public override void SpawnWithDestroyDelay(GameObject _agent)
     {
         for (int i = 0; i < AgentNumber; i++)
         {
             GameObject _go = GameObject.Instantiate(_agent, GetRadiusPosition(i, AgentNumber, Radius, Position), Quaternion.identity);
-            GameObject.Destroy(_go, _destroyDelay);
+            GameObject.Destroy(_go, AutoDestroyDelay);
         } 
     }
 
-    public override void SpawnWithDestroyDelay(List<GameObject> _agents, float _destroyDelay = 0)
+    public override void SpawnWithDestroyDelay(List<GameObject> _agents)
     {
         for (int i = 0; i < AgentNumber; i++)
         {
             int _randomIndex = UnityEngine.Random.Range(0, _agents.Count);
             if (!_agents[_randomIndex]) continue;
             GameObject _go = GameObject.Instantiate(_agents[_randomIndex], GetRadiusPosition(i, AgentNumber, Radius, Position), Quaternion.identity);
-            GameObject.Destroy(_go, _destroyDelay);
+            GameObject.Destroy(_go, AutoDestroyDelay);
         }
     }
     
@@ -78,13 +83,18 @@ public class SM_CircleMode : SM_Mode
         //AgentNumber = EditorGUILayout.IntSlider("Radius", AgentNumber, 1, 100);
         EditoolsField.IntSlider("Radius", ref Radius, 1, 100);
         EditoolsField.IntSlider("Agent Number", ref AgentNumber, 1, 50);
+
+        EditoolsField.Toggle("Auto Destroy Agents ?", ref AutoDestroyAgent);
+        if(AutoDestroyAgent)
+            AutoDestroyDelay = EditorGUILayout.Slider("Auto Destroy Delay", AutoDestroyDelay, 0, 15);
+
     }
     public override void DrawLinkTosSpawner(Vector3 _position) => Handles.DrawDottedLine(Position, _position, 0.5f);
     
     public override void DrawSceneMode()
     {
         EditoolsHandle.PositionHandle(ref Position, Quaternion.identity);
-        
+       
         Handles.DrawWireDisc(Position, Vector3.up, Radius);
         for (int i = 0; i < AgentNumber; i++)
         {
