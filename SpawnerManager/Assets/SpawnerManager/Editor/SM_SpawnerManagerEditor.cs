@@ -73,9 +73,9 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
             EditoolsField.Toggle("Use Trigger ?", ref _point.UseTrigger);
 
             EditoolsLayout.Space();
-            EditoolsField.Toggle("Can Despawn ?", ref _point.CanDespawn);
-            if(_point.CanDespawn)
-                _point.DespawnDelay = EditorGUILayout.Slider("Despawn Delay", _point.DespawnDelay, 0, 15);
+            EditoolsField.Toggle("Auto Destroy Agents ?", ref _point.AutoDestroyAgent);
+            if(_point.AutoDestroyAgent)
+                _point.AutoDestroyDelay = EditorGUILayout.Slider("Auto Destroy Delay", _point.AutoDestroyDelay, 0, 15);
             
             EditoolsLayout.Space(1);
             

@@ -57,10 +57,8 @@ public class SM_LineMode : SM_Mode
             GameObject.Destroy(_go, _destroyDelay);
         }
     }
-
-
-   
-
+    
+    
     Vector3 GetPositionOnLine(int _pos, int _maxPos, Vector3 _position, Vector3 _endPosition)
     {
         return Vector3.Lerp(_position, _endPosition, (float)_pos/_maxPos);
@@ -72,6 +70,7 @@ public class SM_LineMode : SM_Mode
     {
         Handles.DrawDottedLine(Position, _position, 0.5f);
     }
+    
     public override void DrawSceneMode()
     {
         EditoolsHandle.PositionHandle(ref Position, Quaternion.identity);

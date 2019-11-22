@@ -49,10 +49,10 @@ public class SM_SpawnTrigger : MonoBehaviour
         {
             SM_SpawnMode _mode = data.SpawnModes[i];
             
-            if(data.IsMonoAgent && data.CanDespawn)
-               _mode.Mode.SpawnWithDestroyDelay(data.MonoAgent, data.DespawnDelay);
-            else if(data.CanDespawn)
-                _mode.Mode.SpawnWithDestroyDelay(data.Agents, data.DespawnDelay);
+            if(data.IsMonoAgent && data.AutoDestroyAgent)
+               _mode.Mode.SpawnWithDestroyDelay(data.MonoAgent, data.AutoDestroyDelay);
+            else if(data.AutoDestroyAgent)
+                _mode.Mode.SpawnWithDestroyDelay(data.Agents, data.AutoDestroyDelay);
             
             else if(data.IsMonoAgent)
                 _mode.Mode.Spawn(data.MonoAgent);
