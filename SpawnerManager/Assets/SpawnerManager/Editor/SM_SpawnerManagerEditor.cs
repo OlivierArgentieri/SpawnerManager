@@ -69,7 +69,14 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
 
             EditoolsField.Vector3Field("Position", ref _point.Position); 
             EditoolsField.Vector3Field("Size", ref _point.Size);
+            _point.SpawnDelay = EditorGUILayout.Slider("Spawn Delay", _point.SpawnDelay, 0, 15);
+            EditoolsField.Toggle("Use Trigger ?", ref _point.UseTrigger);
 
+            EditoolsLayout.Space();
+            EditoolsField.Toggle("Can Despawn ?", ref _point.CanDespawn);
+            if(_point.CanDespawn)
+                _point.DespawnDelay = EditorGUILayout.Slider("Despawn Delay", _point.DespawnDelay, 0, 15);
+            
             EditoolsLayout.Space(1);
             
             DrawSpawnModeUI(_point);

@@ -1,7 +1,8 @@
 ﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+ using System.Security.Cryptography;
+ using UnityEngine;
  using Random = System.Random;
 #if UNITY_EDITOR
 using EditoolsUnity;
@@ -23,20 +24,37 @@ public class SM_CircleMode : SM_Mode
 
     public override void Spawn(GameObject _agent)
     {
-        if (!_agent) return;
         for (int i = 0; i < AgentNumber; i++)
         {
             GameObject.Instantiate(_agent, GetRadiusPosition(i, AgentNumber, Radius, Position), Quaternion.identity);
-        }
+        } 
+    }
+    public override void SpawnWithDestroyDelay(GameObject _agent, float _destroyDelay)
+    {
+        for (int i = 0; i < AgentNumber; i++)
+        {
+            GameObject _go = GameObject.Instantiate(_agent, GetRadiusPosition(i, AgentNumber, Radius, Position), Quaternion.identity);
+            GameObject.Destroy(_go, _destroyDelay);
+        } 
     }
 
+    public override void SpawnWithDestroyDelay(List<GameObject> _agents, float _destroyDelay = 0)
+    {
+        for (int i = 0; i < AgentNumber; i++)
+        {
+            int _randomIndex = UnityEngine.Random.Range(0, _agents.Count);
+            if (!_agents[_randomIndex]) continue;
+            GameObject _go = GameObject.Instantiate(_agents[_randomIndex], GetRadiusPosition(i, AgentNumber, Radius, Position), Quaternion.identity);
+            GameObject.Destroy(_go, _destroyDelay);
+        }
+    }
+    
     public override void Spawn(List<GameObject> _agents)
     {
         for (int i = 0; i < AgentNumber; i++)
         {
             int _randomIndex = UnityEngine.Random.Range(0, _agents.Count);
             if (!_agents[_randomIndex]) continue;
-
             GameObject.Instantiate(_agents[_randomIndex], GetRadiusPosition(i, AgentNumber, Radius, Position), Quaternion.identity);
         }
     }
@@ -54,7 +72,6 @@ public class SM_CircleMode : SM_Mode
     #endregion
 
     #if UNITY_EDITOR
-
     public override void DrawSettings()
     {
         //Radius = EditorGUILayout.IntSlider("Radius", Radius, 1, 100);

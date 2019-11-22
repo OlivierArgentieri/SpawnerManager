@@ -10,7 +10,9 @@ public abstract class SM_Mode
     #region custom methods
 
     public abstract void Spawn(GameObject _agent);
-    public abstract void Spawn(List<GameObject> _agents);
+    public abstract void Spawn(List<GameObject> _agent);
+    public abstract void SpawnWithDestroyDelay(GameObject _agent, float _destroyDelay = 0);
+    public abstract void SpawnWithDestroyDelay(List<GameObject> _agents, float _destroyDelay = 0);
 #if UNITY_EDITOR
     public abstract void DrawSceneMode();
     public abstract void DrawSettings();

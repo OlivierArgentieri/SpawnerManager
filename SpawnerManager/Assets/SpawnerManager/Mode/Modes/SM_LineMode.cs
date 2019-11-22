@@ -26,6 +26,16 @@ public class SM_LineMode : SM_Mode
             GameObject.Instantiate(_agent, GetPositionOnLine(i, AgentNumber, Position, EndPosition), Quaternion.identity);
         }
     }
+    
+    public override void SpawnWithDestroyDelay(GameObject _agent, float _destroyDelay)
+    {
+        if (!_agent) return;
+        for (int i = 0; i < AgentNumber; i++)
+        {
+            GameObject _go = GameObject.Instantiate(_agent, GetPositionOnLine(i, AgentNumber, Position, EndPosition), Quaternion.identity);
+            GameObject.Destroy(_go, _destroyDelay);
+        }
+    }
 
     public override void Spawn(List<GameObject> _agents)
     {
@@ -34,6 +44,17 @@ public class SM_LineMode : SM_Mode
             int _randomIndex = UnityEngine.Random.Range(0, _agents.Count);
             if (!_agents[_randomIndex]) continue;
             GameObject.Instantiate(_agents[_randomIndex], GetPositionOnLine(i, AgentNumber, Position, EndPosition), Quaternion.identity);
+        }
+    }
+    
+    public override void SpawnWithDestroyDelay(List<GameObject> _agents, float _destroyDelay)
+    {
+        for (int i = 0; i < AgentNumber; i++)
+        {
+            int _randomIndex = UnityEngine.Random.Range(0, _agents.Count);
+            if (!_agents[_randomIndex]) continue;
+            GameObject _go = GameObject.Instantiate(_agents[_randomIndex], GetPositionOnLine(i, AgentNumber, Position, EndPosition), Quaternion.identity);
+            GameObject.Destroy(_go, _destroyDelay);
         }
     }
 
