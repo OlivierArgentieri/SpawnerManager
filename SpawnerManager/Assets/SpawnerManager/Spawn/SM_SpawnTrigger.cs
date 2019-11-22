@@ -20,7 +20,7 @@ public class SM_SpawnTrigger : MonoBehaviour
     #region unity methods
     private void Start()
     {
-        if (data == null || !data.UseTrigger || Triggered) return;
+        if (data == null || data.UseTrigger || Triggered) return;
             StartCoroutine(DelayedCallback(data.SpawnDelay, TriggerSpawn));
     }
 
