@@ -51,7 +51,7 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
         
         EditoolsLayout.Vertical(true);
         EditoolsButton.Button("+",Color.green , eTarget.AddPoint);
-        EditoolsButton.ButtonWithConfirm("#",Color.red , eTarget.Clear, "Remove All ?", "Remove All Point ?" , _showCondition:eTarget.SpawnPoints.Count > 0);
+        EditoolsButton.ButtonWithConfirm("Clear Points",Color.red , eTarget.Clear, "Remove All ?", "Remove All Point ?" , _showCondition:eTarget.SpawnPoints.Count > 0);
         EditoolsLayout.Vertical(false); 
         
         EditoolsLayout.Horizontal(false);
@@ -77,7 +77,13 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
 
             EditoolsField.Vector3Field("Position", ref _point.Position); 
             EditoolsField.Vector3Field("Size", ref _point.Size);
-            _point.SpawnDelay = EditorGUILayout.Slider("Spawn Delay", _point.SpawnDelay, 0, 15);
+            
+            EditoolsField.Toggle("Use Delay ?", ref _point.UseDelay);
+            if (_point.UseDelay)
+                _point.SpawnDelay = EditorGUILayout.Slider("Spawn Delay", _point.SpawnDelay, 0, 15);
+            else
+                _point.SpawnDelay = 0;
+            
             EditoolsField.Toggle("Use Trigger ?", ref _point.UseTrigger);
 
             EditoolsLayout.Space();
@@ -110,7 +116,7 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
             EditoolsBox.HelpBoxInfo($"Add agent to spawn");
             EditoolsLayout.Vertical(true);
             EditoolsButton.Button("Add Agent", Color.cyan, _point.AddAgent);
-            EditoolsButton.ButtonWithConfirm("#", Color.red, _point.ClearAgents, "Clear Agents", "Clear All Agents ?",
+            EditoolsButton.ButtonWithConfirm("Clear", Color.red, _point.ClearAgents, "Clear Agents", "Clear All Agents ?",
                 _showCondition: _point.Agents.Count > 0);
             EditoolsLayout.Vertical(false);
             EditoolsLayout.Horizontal(false);
@@ -158,7 +164,7 @@ public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
         
         EditoolsLayout.Vertical(true);
         EditoolsButton.Button("+", Color.green, _point.AddMode);
-        EditoolsButton.ButtonWithConfirm("#",Color.red , _point.ClearModes, "Remove All ?", "Remove All Mode ?", _showCondition: _point.SpawnModes.Count > 0);
+        EditoolsButton.ButtonWithConfirm("Clear all",Color.red , _point.ClearModes, "Remove All ?", "Remove All Mode ?", _showCondition: _point.SpawnModes.Count > 0);
         EditoolsLayout.Vertical(false); 
         
         EditoolsLayout.Horizontal(false);

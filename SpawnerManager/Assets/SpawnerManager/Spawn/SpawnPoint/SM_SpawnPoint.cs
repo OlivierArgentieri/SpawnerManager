@@ -17,6 +17,7 @@ public class SM_SpawnPoint
     public Vector3 Position = Vector3.zero;
     public Vector3 Size = Vector3.one;
     public bool UseTrigger = true;
+    public bool UseDelay = false;
     public float SpawnDelay = 0;
 
     public void AddAgent() => Agents.Add(null);
