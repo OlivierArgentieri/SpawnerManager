@@ -12,7 +12,3 @@ Unity Tools to Manage Spawn point, type and trigger position.
   ![](https://github.com/OlivierArgentieri/SpawnerManager/blob/master/Capture/Spawner.PNG)
   
   ![](https://github.com/OlivierArgentieri/SpawnerManager/blob/master/Capture/Spawned.PNG)
-
-
-## Notes :
-    - [#] button -> remove all 
