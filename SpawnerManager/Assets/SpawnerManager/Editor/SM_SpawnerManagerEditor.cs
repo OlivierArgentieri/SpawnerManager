@@ -10,7 +10,7 @@ using UnityEditor;
 [CustomEditor(typeof(SM_SpawnerManager))]
 public class SM_SpawnerToolsEditor : EditorCustom<SM_SpawnerManager>
 {
-    Version version = new Version(1,2,2);
+    Version version = new Version(1,2,3);
     private const string triggerSpawnAssetName = "SpawnCollider/BoxCollider";
     protected override void OnEnable()
     {
